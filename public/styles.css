@@ -1,9 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 h2 {
   text-align: center;
 }
 
 
 body {
-  background: #6ed3cf;
+  background: #7EC0EE;
 
+}
+
+.label, button {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+input, button{
+  padding: 1em;
+  border-radius: .6em;
 }

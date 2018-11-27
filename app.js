@@ -3,13 +3,14 @@ const axios = require("axios");
 const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const formatString = require("./formatString");
 
 const app = express();
 
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
-//const geocodeUrl = `http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodeWithQuestionMark}`;
 
 
+//middleware
 app.use(express.static('public'))
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,17 +23,10 @@ app.get("/", (req, res)=> {
 });
 
 app.post("/post", (req, res)=> {
+   const arr = formatString.formatString(req);
 
-
-// Future function
-  const city = req.body.city;
-  const zip = req.body.zip;
-  const address = req.body.address;
-  const state = req.body.state;
-
-  const arr = `${address}, ${city}, ${state} ${zip}`;
   const encodedUrl = encodeURIComponent(arr);
-  const temperature = axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedUrl}`)
+   return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedUrl}`)
   .then((res) => {
    const lat = res.data.results[0].locations[0].displayLatLng.lat;
    const lng = res.data.results[0].locations[0].displayLatLng.lng;
@@ -46,6 +40,11 @@ app.post("/post", (req, res)=> {
  });
 
 
+});
+
+
+app.get("/", (req, res)=> {
+  res.render("index");
 });
 
 
