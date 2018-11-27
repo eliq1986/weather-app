@@ -1,18 +1,21 @@
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-h2 {
+
+html {
+  background: linear-gradient(to top, white, #87CEFA) fixed;
+}
+
+h2, label {
   text-align: center;
 }
 
 
-body {
-  background: #7EC0EE;
 
-}
 
-.label, button {
+.label ,select {
   display: block;
   width: 100%;
   margin: auto;
@@ -21,4 +24,21 @@ body {
 input, button{
   padding: 1em;
   border-radius: .6em;
+}
+
+.search {
+
+    margin: 1em auto 0 auto;
+    font-size: 1em;
+    width: 100%;
+
+}
+
+
+
+@media(min-width: 600px) {
+  body {
+    max-width: 700px;
+    margin: auto;
+  }
 }

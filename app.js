@@ -6,24 +6,25 @@ const bodyParser = require("body-parser");
 const formatString = require("./formatString");
 
 const app = express();
-
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
-
 
 //middleware
 app.use(express.static('public'))
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// View Engine
 app.set('view engine', 'pug');
+
 
 app.get("/", (req, res)=> {
   res.render("index");
 });
 
+
+
 app.post("/post", (req, res)=> {
-   const arr = formatString.formatString(req);
+   const arr = formatString.formatReq(req);
 
   const encodedUrl = encodeURIComponent(arr);
    return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedUrl}`)
@@ -33,8 +34,9 @@ app.post("/post", (req, res)=> {
    return axios.get(`https://api.darksky.net/forecast/61a25768875673d685669fff4010cc5f/${lat},${lng}`)
 
  }).then((tempData) => {
-   const temp = tempData.data.currently.apparentTemperature
-   res.render("result", {temp: temp});
+   const temp = tempData.data.currently.apparentTemperature.toFixed(0);
+
+   res.render("result", {temp: temp})
  }).catch((err) => {
    console.log(err);
  });
@@ -43,9 +45,8 @@ app.post("/post", (req, res)=> {
 });
 
 
-app.get("/", (req, res)=> {
-  res.render("index");
-});
+
+
 
 
 app.listen(3000, ()=> {

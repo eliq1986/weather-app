@@ -1,4 +1,4 @@
-const formatString = (req) => {
+const formatReq = (req) => {
   const city = req.body.city;
   const zip = req.body.zip;
   const address = req.body.address;
@@ -10,5 +10,5 @@ const formatString = (req) => {
 
 
 module.exports = {
-  formatString
+  formatReq
 };
