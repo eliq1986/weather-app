@@ -23,10 +23,11 @@ app.get("/", (req, res)=> {
 
 
 
-app.post("/post", (req, res)=> {
-   const arr = formatString.formatReq(req);
 
-  const encodedUrl = encodeURIComponent(arr);
+app.post("/post", (req, res)=> {
+   const addressString = formatString.formatReq(req);
+
+  const encodedUrl = encodeURIComponent(addressString);
    return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedUrl}`)
   .then((res) => {
    const lat = res.data.results[0].locations[0].displayLatLng.lat;

@@ -1,20 +1,29 @@
+
+/****All ELements**/
 * {
   box-sizing: border-box;
   font-family: 'Noto Sans TC', sans-serif;
 }
 
-
 html {
   background: linear-gradient(to top, white, #87CEFA) fixed;
 }
 
+/***Typography***/
+
 h2, label {
   text-align: center;
 }
+input {
+  background: #D3D3D3;
+}
+h2 {
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3); color: rgba(255,255,255,0);
+  font: 100px 'ChunkFiveRegular';
+}
 
 
-
-
+/*****Layout****/
 .label ,select {
   display: block;
   width: 100%;
@@ -27,14 +36,28 @@ input, button{
 }
 
 .search {
+  margin: 1em auto 0 auto;
+  font-size: 1em;
+  width: 100%;
+}
+/****Pseudo***/
+input:hover, button:hover, select:hover {
+  cursor: pointer;
+}
+button:hover {
+  background: tomato;
+}
 
-    margin: 1em auto 0 auto;
-    font-size: 1em;
-    width: 100%;
+input:focus {
+  background: white;
+}
+/***Transitions***/
+button {
+  transition: background-color 0.7s ease;
 
 }
 
-
+/***Desktop***/
 
 @media(min-width: 600px) {
   body {
