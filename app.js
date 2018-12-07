@@ -4,6 +4,7 @@ const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const formatString = require("./formatString");
+const typeOfClothes = require("./typeOfClothes");
 
 const app = express();
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
@@ -36,8 +37,10 @@ app.post("/post", (req, res)=> {
 
  }).then((tempData) => {
    const temp = tempData.data.currently.apparentTemperature.toFixed(0);
+   
+   const clothes = typeOfClothes.clothesType(temp);
 
-   res.render("result", {temp: temp})
+   res.render("result", {temp: temp, clothes: clothes})
  }).catch((err) => {
    console.log(err);
  });
