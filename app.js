@@ -3,7 +3,7 @@ const axios = require("axios");
 const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const formatString = require("./formatString");
+const formatString = require("./helperFunctions/formatString");
 const typeOfClothes = require("./typeOfClothes");
 
 const app = express();
@@ -37,7 +37,7 @@ app.post("/post", (req, res)=> {
 
  }).then((tempData) => {
    const temp = tempData.data.currently.apparentTemperature.toFixed(0);
-   
+
    const clothes = typeOfClothes.clothesType(temp);
 
    res.render("result", {temp: temp, clothes: clothes})

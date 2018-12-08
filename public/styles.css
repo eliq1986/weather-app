@@ -22,6 +22,11 @@ h2 {
 
 h3 {
   text-align: center;
+  color: white;
+  text-shadow: -1px 0px 0px grey;
+  text-transform: uppercase;
+
+
 }
 /*****Layout****/
 .label ,select{
@@ -47,7 +52,8 @@ input:hover, button:hover, select:hover {
   cursor: pointer;
 }
 button:hover {
-  background: #555555;
+  background: #d3d3d3;
+  border: 5px solid white;
 }
 
 input:focus {
@@ -55,7 +61,7 @@ input:focus {
 }
 /***Transitions***/
 button {
-  transition: background-color 0.6s ease;
+  transition: background-color 0.5s ease;
 
 }
 
