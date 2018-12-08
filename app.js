@@ -4,7 +4,7 @@ const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const formatString = require("./helperFunctions/formatString");
-const typeOfClothes = require("./typeOfClothes");
+const typeOfClothes = require("./helperFunctions/typeOfClothes");
 
 const app = express();
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
