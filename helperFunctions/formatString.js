@@ -1,4 +1,4 @@
-const formatReq = (req) => {
+module.exports.formatReq = (req) => {
   const city = req.body.city;
   const zip = req.body.zip;
   const address = req.body.address;
@@ -6,9 +6,3 @@ const formatReq = (req) => {
   return `${address}, ${city}, ${state} ${zip}`;
 
 }
-
-
-
-module.exports = {
-  formatReq
-};

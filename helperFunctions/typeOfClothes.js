@@ -1,5 +1,3 @@
-
-
 module.exports.clothesType = (temp) => {
     if (temp > 80) {
       return "Wear some sunscreen"

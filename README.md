@@ -16,7 +16,7 @@ JS Promises
 ```
 
 <p align="center">
-<img   src="https://user-images.githubusercontent.com/6277603/49688719-10164480-facb-11e8-9094-d786957c612a.png">
+<img   src="https://user-images.githubusercontent.com/6277603/49817312-bad56f80-fd24-11e8-8678-4ec2b0adbbef.png">
 </p>
 
 

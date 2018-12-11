@@ -33,9 +33,20 @@ h3 {
   display: block;
   width: 80%;
   margin: auto;
+  border: none;
+
 }
 
-input, button{
+input[type="text"], input[type="number"] {
+  background: none;
+  border-bottom: 3px solid white;
+  text-align: center;
+  font-size: 1.2em;
+  padding: .4em;
+  margin-bottom: .3em;
+}
+
+ button{
   padding: 1em;
   border-radius: .6em;
 }
@@ -58,6 +69,8 @@ button:hover {
 
 input:focus {
   background: white;
+  outline: none;
+  text-align: left;
 }
 /***Transitions***/
 button {
