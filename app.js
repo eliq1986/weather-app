@@ -18,6 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 
 
+
+
+// Home route
 app.get("/", (req, res)=> {
   res.render("index");
 });
@@ -56,3 +59,6 @@ app.post("/post", (req, res)=> {
 app.listen(3000, ()=> {
   console.log("Server running on port 3000");
 });
+
+
+module.exports.app = app;
