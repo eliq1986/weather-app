@@ -34,10 +34,7 @@ h3 {
 }
 
 .title {
-  animation-name: moveFromTop;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-
+  animation: moveFromTop 1s ease-in-out;
 }
 /*****Layout****/
 .label ,select{
@@ -75,9 +72,8 @@ input:hover, button:hover, select:hover {
   cursor: pointer;
 }
 button:hover {
- animation-name: buttonHover;
- animation-duration: .8s;
- animation-fill-mode: forwards;
+
+ animation: buttonHover .8s forwards;
 }
 
 input:focus {
