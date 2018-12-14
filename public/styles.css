@@ -8,7 +8,7 @@
 
 
 html {
-  background-image: url("weather-background.jpg");
+  background-image: url("img/weather-background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -55,6 +55,7 @@ input[type="text"], input[type="number"] {
   font-size: 1.2em;
   padding: .4em;
   margin-bottom: .3em;
+
 }
 
  button{
@@ -74,20 +75,22 @@ input:hover, button:hover, select:hover {
   cursor: pointer;
 }
 button:hover {
-  background: #d3d3d3;
-  border: 5px solid white;
+ animation-name: buttonHover;
+ animation-duration: .8s;
+ animation-fill-mode: forwards;
 }
 
 input:focus {
-  background: white;
+  background: none;
   outline: none;
   text-align: left;
+  color: white;
 }
-/***Transitions***/
-button {
-  transition: background-color 0.5s ease;
-  transition-duration: .8s;
+
+input::placeholder {
+  color: white;
 }
+
 
 /***Desktop***/
 
@@ -113,4 +116,14 @@ button {
       opacity: 1;
       transform: translateY(0);
     }
+}
+
+@keyframes buttonHover {
+  0%{
+    background: white;
+  }
+
+  100% {
+    background: #C0D9D9;
+  }
 }
