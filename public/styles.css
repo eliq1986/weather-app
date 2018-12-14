@@ -6,12 +6,14 @@
 
 }
 
+
 html {
-  background: linear-gradient(to top, white, #87CEFA) fixed;
-
+  background-image: url("weather-background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
 }
-
-
 /***Typography***/
 
 h2, label {
