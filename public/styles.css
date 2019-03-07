@@ -88,12 +88,12 @@ select:focus {
 }
 
 button:hover {
-	transform: translateY(-8px);
+	transform: translateY(-5px);
 	box-shadow: 0 10px 20px gray;
 
 }
 button:active {
-	transform: translateY(1px);
+	transform: translateY(0px);
 	box-shadow: 0 1px 5px gray;
 }
 

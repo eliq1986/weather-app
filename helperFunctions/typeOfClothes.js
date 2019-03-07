@@ -1,4 +1,5 @@
-module.exports.clothesType = (temp) => {
+
+clothesType = (temp) => {
     if (temp > 80) {
       return "Wear some sunscreen"
     } else if(temp  < 70 && temp > 50) {
@@ -7,3 +8,5 @@ module.exports.clothesType = (temp) => {
       return "Bring a peacoat its cold"
     }
     }
+
+module.exports = clothesType;

@@ -3,8 +3,10 @@ const axios = require("axios");
 const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const formatString = require("./helperFunctions/formatString");
-const typeOfClothes = require("./helperFunctions/typeOfClothes");
+
+
+const formatAddress = require("./helperFunctions/formatString");
+const getTypeOfClothes = require("./helperFunctions/typeOfClothes");
 
 const app = express();
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
@@ -19,31 +21,29 @@ app.set('view engine', 'pug');
 
 
 
-
 // Home route
 app.get("/", (req, res)=> {
   res.render("index");
 });
 
 
-
-
 app.post("/post", (req, res)=> {
-   const addressString = formatString.formatReq(req);
+   const addressString = formatAddress(req);
 
-  const encodedUrl = encodeURIComponent(addressString);
+   const encodedUrl = encodeURIComponent(addressString);
    return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedUrl}`)
-  .then((res) => {
-   const lat = res.data.results[0].locations[0].displayLatLng.lat;
-   const lng = res.data.results[0].locations[0].displayLatLng.lng;
-   return axios.get(`https://api.darksky.net/forecast/61a25768875673d685669fff4010cc5f/${lat},${lng}`)
 
- }).then((tempData) => {
-   const temp = tempData.data.currently.apparentTemperature.toFixed(0);
+  .then(({ data }) => {
 
-   const clothes = typeOfClothes.clothesType(temp);
+   const latitude = data.results[0].locations[0].displayLatLng.lat;
+   const longitude = data.results[0].locations[0].displayLatLng.lng;
+   return axios.get(`https://api.darksky.net/forecast/61a25768875673d685669fff4010cc5f/${latitude},${longitude}`)
 
-   res.render("result", {temp: temp, clothes: clothes})
+ }).then(({ data }) => {
+   const currentTemp = data.currently.apparentTemperature.toFixed(0);
+
+   const clothes = getTypeOfClothes(currentTemp);
+   res.render("result", { currentTemp, clothes })
  }).catch((err) => {
    console.log(err);
  });
@@ -61,4 +61,4 @@ app.listen(3000, ()=> {
 });
 
 
-module.exports.app = app;
+// module.exports.app = app;
