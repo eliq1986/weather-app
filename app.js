@@ -3,9 +3,10 @@ const axios = require("axios");
 const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const chalk = require("chalk");
 
 
-const formatAddress = require("./helperFunctions/formatString");
+const formatAddress = require("./helperFunctions/formatAddress");
 const getTypeOfClothes = require("./helperFunctions/typeOfClothes");
 
 const app = express();
@@ -26,6 +27,9 @@ app.get("/", (req, res)=> {
   res.render("index");
 });
 
+app.get("*",(req,res)=> {
+  res.render("404");
+});
 
 app.post("/post", (req, res)=> {
    const addressString = formatAddress(req);
@@ -42,8 +46,8 @@ app.post("/post", (req, res)=> {
  }).then(({ data }) => {
    const currentTemp = data.currently.apparentTemperature.toFixed(0);
 
-   const clothes = getTypeOfClothes(currentTemp);
-   res.render("result", { currentTemp, clothes })
+   const clothesToWear = getTypeOfClothes(currentTemp);
+   res.render("result", { currentTemp, clothesToWear })
  }).catch((err) => {
    console.log(err);
  });
@@ -57,8 +61,5 @@ app.post("/post", (req, res)=> {
 
 
 app.listen(3000, ()=> {
-  console.log("Server running on port 3000");
+  console.log(chalk.inverse.cyan("Server running on port 3000"));
 });
-
-
-// module.exports.app = app;
