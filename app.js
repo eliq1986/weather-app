@@ -13,7 +13,7 @@ const app = express();
 const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
 
 //middleware
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -39,9 +39,9 @@ app.post("/post", (req, res)=> {
 
   .then(({ data }) => {
 
-   const latitude = data.results[0].locations[0].displayLatLng.lat;
-   const longitude = data.results[0].locations[0].displayLatLng.lng;
-   return axios.get(`https://api.darksky.net/forecast/61a25768875673d685669fff4010cc5f/${latitude},${longitude}`)
+   const { lat, lng } = data.results[0].locations[0].displayLatLng;
+
+   return axios.get(`https://api.darksky.net/forecast/61a25768875673d685669fff4010cc5f/${lat},${lng}`)
 
  }).then(({ data }) => {
    const currentTemp = data.currently.apparentTemperature.toFixed(0);
@@ -51,8 +51,6 @@ app.post("/post", (req, res)=> {
  }).catch((err) => {
    console.log(err);
  });
-
-
 });
 
 

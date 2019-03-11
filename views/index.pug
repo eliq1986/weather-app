@@ -1,7 +1,7 @@
 extends layout.pug
 block content
   form(action='/post', method='post')
-    label(for='address' class="label" class="label") 
+    label(for='address' class="label" class="label")
     input(type='text', name='address' placeholder="Street" class="label")
     label(for="zip" class="label")
     input(type="number" name="zip" placeholder="Zip Code" class="label")
@@ -60,4 +60,4 @@ block content
       option(value='WV') West Virginia
       option(value='WI') Wisconsin
       option(value='WY') Wyoming
-    button(type='submit', name='button' class="search") Search
+    input(type='submit' name='button' class="search") 
