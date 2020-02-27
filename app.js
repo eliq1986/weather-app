@@ -4,13 +4,13 @@ const pug = require("pug");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const chalk = require("chalk");
+const api_key = require("./config");
 
 
 const formatAddress = require("./helperFunctions/formatAddress");
 const getTypeOfClothes = require("./helperFunctions/typeOfClothes");
 
 const app = express();
-const api_key = "DZz1ctMkfQw4h1Z8oues7E9Bbho3rGPC";
 
 //middleware
 app.use(express.static('public'));
